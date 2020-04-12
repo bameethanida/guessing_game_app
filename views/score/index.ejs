@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <style>
+        body {
+            background: white;
+            font-family: "Comic sans MS";
+            color: black;
+            text-align: center;
+        }
+
+        #score-board{
+          font-size: 100px;
+          margin-top: 50px;
+        }
+
+        #mainmenu-button{
+          margin-top: 30px;
+        }
+        
+        h1{
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        table{
+          padding: 10px;
+          border: 5px solid red;
+          border-radius: 20px;
+          border-collapse: separate;
+       
+        }
+
+        th,td{
+          padding: 0 60px 10px;
+          font-size: 20px;
+    
+        }
+
+    </style>
+</head>
+
+<body>
+    <p id="score-board">Score Board</p>
+    
+    <table align="center">
+      <tr>
+        <th>Rank</th>
+        <th>Name</th>
+        <th>Fail</th>
+      </tr>
+        <% for(let i=0; i < data.length; i++) { %>
+          <tr>
+            <td><%= i+1 %>.</td>
+            <td><%= data[i].name %></td>
+            <td><%= data[i].fail %></td>
+          </tr>
+        <% } %>
+    </table>
+    
+    <div>
+      <a href="/"><button type="submit" class="btn btn-warning" id="mainmenu-button">Main Menu</button></a>
+  </div> 
+
+</body>
+
+</html>

@@ -1,39 +1,37 @@
 'use strict';
 const express = require('express');
+const path = require('path');
+
 const MongoClient = require('mongodb').MongoClient;
 const assert = require('assert');
+const bodyParser = require('body-parser');
+const router = require('./router')
+
 // Connection URL
-const url = 'mongodb://mongodb:27017';
+const url = 'mongodb://localhost:27017';
 
 // Database Name
 const dbName = 'pantip';
 // Create a new MongoClient
-const client = new MongoClient(url);
+const client = new MongoClient(url, { useUnifiedTopology: true });
 
 // Constants
-const PORT = 80;
+const PORT = 8080;
 const HOST = '0.0.0.0';
 
 // App
 const app = express();
+app.use(bodyParser.urlencoded({ extended: true }))
+app.set('views', path.join(__dirname, 'views'))
+app.set('view engine', 'ejs')
+app.use(express.json())
+app.use(express.static(__dirname + '/views'))
+app.use(express.static(__dirname + '/views/game'))
+app.use(express.static(__dirname + '/views/score'))
 
-// Use connect method to connect to the Server
-client.connect(function(err) {
-  assert.equal(null, err);
-  console.log("Connected successfully to server");
+app.use('/', router);
 
-  const db = client.db(dbName);
-  const col = db.collection('students');
 
-  app.get('/', (req, res) => {
-    // Get first two documents that match the query
-    col.find({}).limit(1).toArray(function(err, docs) {
-      assert.equal(null, err);
-      res.send(JSON.stringify(docs));
-      // client.close();
-    });
-  });
+app.listen(PORT, HOST, () => {
+  console.log(`Running on http://${HOST}:${PORT}`);
 });
-
-app.listen(PORT, HOST);
-console.log(`Running on http://${HOST}:${PORT}`);

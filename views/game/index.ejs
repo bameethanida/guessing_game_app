@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+        body {
+            background: white;
+            font-family: "Comic sans MS";
+            color: black;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 48px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .answer-box {
+            justify-content: center;
+            display: flex;
+        }
+        
+        #ans_1,
+        #ans_2,
+        #ans_3,
+        #ans_4 {
+            padding: 0 10px;
+        }
+
+        .answer-box{
+            padding-bottom: 30px;
+        }
+
+        #greeting{
+            padding-top: 15px;
+        }
+
+        .popup-player{
+            position:fixed; 
+            left:50%; 
+            top:40%; 
+            transform:translate(-50%,-50%); 
+            z-index:10;
+            padding: 24px 48px;
+            border: 1px solid #c2c2c2;
+            background: white; 
+            color:white;
+            border-radius: 10px; 
+            transition:linear 0.2s;
+            font-size:1.5em; 
+            font-weight:bold;
+            background:transparent;
+            box-shadow: 2px 4px 6px 0px rgba(0,0,0,0.2);
+            visibility: hidden;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div id="greeting">
+    <h2 style="display: inline;">Welcome </h2><h2 id='name' style="display: inline;"><%= name %></h2><h2 style="display: inline;"> !</h2>
+    </div>
+    <!-- <button id="post">post</button> -->
+    <h1>Alphabet Guessing Game</h1>
+
+    <h3 style="display: inline;">Please choose A, B, C, or D to guess the <h3 style="display: inline;" id="order-answer">
+        <h3 style="display: inline;" > character.</h3></h3></h3>
+
+    <h4>Your Answer:</h4>
+    <div class="answer-box">
+      <div id="ans_1">_</div>
+      <div id="ans_2">_</div>
+      <div id="ans_3">_</div>
+      <div id="ans_4">_</div>
+    </div>
+    <h4 style="display: inline;">Character(s) remaining guessing: <h4 style="display: inline;" id="remain-num">4</h4></h4>
+    <h4 id="fail-num">Fail: 0</h4>
+    <form action="" method="POST">
+        <h4 style="display: inline;" class="chosen">Choose:</h4>
+        <button type="button" id="a">A</button>
+        <button type="button" id="b">B</button>
+        <button type="button" id="c">C</button>
+        <button type="button" id="d">D</button>
+    </form>
+    <!-- pop up current score -->
+    <div class="popup-player">
+        <div>You Won</div>
+        <div style="display: flex; margin-top:16px;">
+            You got&nbsp;<div id="fail-num2">0</div>&nbsp;fail(s).
+        </div>
+    </div>
+    <!-- post data -->
+    <form id="post-form" style="display: none;" action="/score" method="post" >
+        <input id="post-name" name="name"/>
+        <input id="post-fail" name="fail"/>
+    </form>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="./game.js"></script>
+</body>
+
+</html>

@@ -15,6 +15,12 @@ To get the Node server running locally:
 - [body-parser](https://github.com/expressjs/body-parser) - Parse incoming request bodies in a middleware before your handlers, available under the `req.body` property.
 - [ejs](https://github.com/tj/ejs) - It is a simple templating language that generate HTML markup with plain JavaScript
 - [nodemon](https://github.com/remy/nodemon) - Tool helps developing node.js based applications by automatically restarting the node application when file changes in the directory are detected.
+## API
+- URL - `localhost:8080`
+- `GET : URL/` - Render main page
+- `POST : URL/game` - require `name`, render game page and 
+- `GET : URL/score` - Get data, sort fail and time 
+- `POST : URL/score` - Require `name`, `fail`, `time` and sent data to database
 
 # Author
 Thanida Jongarnon 6110545538

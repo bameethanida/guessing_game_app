@@ -78,25 +78,38 @@
       <div id="ans_4">_</div>
     </div>
     <h4 style="display: inline;">Character(s) remaining guessing: <h4 style="display: inline;" id="remain-num">4</h4></h4>
+
+    <!-- Fail -->
     <h4 id="fail-num">Fail: 0</h4>
-    <form action="" method="POST">
-        <h4 style="display: inline;" class="chosen">Choose:</h4>
+
+    <!-- Timer -->
+    <h4 style="display: inline;">Time: <h4 id="timer" style="display: inline;">00:00</h4> </h4>
+ 
+    <div>
+        <h4 style="display: inline-block; margin-top: 10px;" class="chosen">Choose:</h4>
         <button type="button" id="a">A</button>
         <button type="button" id="b">B</button>
         <button type="button" id="c">C</button>
         <button type="button" id="d">D</button>
-    </form>
+    </div>
+    
+
     <!-- pop up current score -->
     <div class="popup-player">
         <div>You Won</div>
         <div style="display: flex; margin-top:16px;">
             You got&nbsp;<div id="fail-num2">0</div>&nbsp;fail(s).
         </div>
+        <div style="display: flex; margin-top:16px;">
+            Your time&nbsp;<div id="timer2">00:00</div>&nbsp;secs.
+        </div>
     </div>
+
     <!-- post data -->
     <form id="post-form" style="display: none;" action="/score" method="post" >
         <input id="post-name" name="name"/>
         <input id="post-fail" name="fail"/>
+        <input id="post-time" name="time"/>
     </form>
 
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>

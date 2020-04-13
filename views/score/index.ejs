@@ -51,12 +51,15 @@
         <th>Rank</th>
         <th>Name</th>
         <th>Fail</th>
+        <th>Time</th>
       </tr>
         <% for(let i=0; i < data.length; i++) { %>
           <tr>
             <td><%= i+1 %>.</td>
             <td><%= data[i].name %></td>
             <td><%= data[i].fail %></td>
+            <% time=data[i].time %>
+            <td><%= Math.floor(time/1000)>9?Math.floor(time/1000):'0'+Math.floor(time/1000) %>:<%= (time%1000)/10 %></td>
           </tr>
         <% } %>
     </table>

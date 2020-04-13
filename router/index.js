@@ -22,19 +22,23 @@ MongoClient.connect(url, options ,(err,client)=>{
         res.render('game', {name:name})
     })
     router.get('/score', (req, res) => {
-        col.find().sort({'fail':1}).limit(5).toArray((err,result)=>{
+        col.find().sort({'fail':1,'time':1}).limit(5).toArray((err,result)=>{
             if(err) throw err
             res.render('score', {data:result})
         }) 
     })
     router.post('/score', (req, res) => {
-        const {name,fail} = req.body
-        col.insertOne({name,fail}).then(_=>{
-            col.find().sort({'fail':1}).limit(5).toArray((err,result)=>{
+        const {name,fail,time} = req.body
+        col.insertOne({name,fail,time}).then(_=>{
+            col.find().sort({'fail':1,'time':1}).limit(5).toArray((err,result)=>{
                 if(err) throw err
                 res.render('score', {data:result})
             })
         })
+    })
+    router.get('/delete',(req,res)=>{
+        col.deleteMany({})
+        res.send('Delete Success')
     })
 })
 

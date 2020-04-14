@@ -18,7 +18,7 @@ To get the Node server running locally:
 ## API
 - URL - `localhost:8080`
 - `GET : URL/` - Render main page
-- `POST : URL/game` - require `name`, render game page and 
+- `POST : URL/game` - Require `name`, render game page
 - `GET : URL/score` - Get data, sort fail and time 
 - `POST : URL/score` - Require `name`, `fail`, `time` and sent data to database
 
